@@ -1,24 +1,26 @@
+<div id="page-content">
 
-<h1>This is Index File</h1>
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Description</th>
-      <th colspan= "<%=@callspan_action_table%>" >Action</th>
-    </tr>
-  </thead>
-  <tbody>
+  <h1 class="text-center mt-4">Listing all Articles</h1>
+  <div class="container">
     <% @articles.each do |articleInstance| %>
-      <tr>
-        <td> <%= articleInstance.title %> </td>
-        <td> <%= articleInstance.description %> </td>
-        <td> <%= link_to 'Show', article_path(articleInstance)%> </td>
-        <td> <%= link_to 'Edit', edit_article_path(articleInstance) %> </td>
-        <td> <%= link_to 'Delete', article_path(articleInstance), data: {confirm: "Are you sure?", method: :delete} %> </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+    <div class="row justify-content-md-center">
+      <div class="col-8 mt-4">
+        <div class="card text-center shadow mb-5 bg-white rounded">
+          <div class="card-header font-italic">
+            by Nawfal Imran
+          </div>
+          <div class="card-body">
+            <h5 class="card-title"><%= link_to articleInstance.title, article_path(articleInstance), class:"text-success" %></h5>
+            <p class="card-text"> <%= articleInstance.description %> </p>
+            <%= link_to 'Show', article_path(articleInstance), class:"btn btn-primary"%>
+          </div>
+          <div class="card-footer text-muted">
+            2 days ago
+          </div>
+        </div>
+      </div>
+    </div>
+    <% end %>     
+  </div>
 
-<p><%= link_to 'Create A New Article', new_article_path %> </p>
+</div>

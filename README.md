@@ -1,24 +1,22 @@
-# README
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+      <th colspan= "<%=@callspan_action_table%>" >Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @articles.each do |articleInstance| %>
+      <tr> 
+        <td> <%= articleInstance.title %> </td>
+        <td> <%= articleInstance.description %> </td>
+        <td> <%= link_to 'Show', article_path(articleInstance)%> </td>
+        <td> <%= link_to 'Edit', edit_article_path(articleInstance) %> </td>
+        <td> <%= link_to 'Delete', article_path(articleInstance), data: {confirm: "Are you sure?", method: :delete} %> </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+<p><%= link_to 'Create A New Article', new_article_path %> </p>
