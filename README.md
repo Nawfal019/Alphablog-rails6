@@ -1,22 +1,6 @@
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Description</th>
-      <th colspan= "<%=@callspan_action_table%>" >Action</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @articles.each do |articleInstance| %>
-      <tr> 
-        <td> <%= articleInstance.title %> </td>
-        <td> <%= articleInstance.description %> </td>
-        <td> <%= link_to 'Show', article_path(articleInstance)%> </td>
-        <td> <%= link_to 'Edit', edit_article_path(articleInstance) %> </td>
-        <td> <%= link_to 'Delete', article_path(articleInstance), data: {confirm: "Are you sure?", method: :delete} %> </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<p>Title: <strong><%=@article.title %></strong></p>
+<p>Description: <strong><%=@article.description %></strong></p>
 
-<p><%= link_to 'Create A New Article', new_article_path %> </p>
+<%= link_to 'Edit', edit_article_path(@article) %> |
+<%= link_to 'Back to All Articles', articles_path %> </td> |
+<%= link_to 'Delete', article_path(@article), data: { confirm: "Are you sure?", method: :delete} %>
