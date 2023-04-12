@@ -38,8 +38,21 @@
       </li>
       
       <% if logged_in? %>
-        <li class="nav-item">
-          <%= link_to current_user.username , user_path(current_user), class: "nav-link"%>
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            href="#"
+            id="navbarDropdown"
+            role="button"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >
+            Profile[ <%= current_user.username %> ]
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <%= link_to "View User Profile", user_path(current_user), class: "dropdown-item" %>
+            <%= link_to "Edit User Profile", edit_user_path(current_user), class: "dropdown-item" %>
         </li>
         <li class="nav-item">
           <%= link_to "Log out", logout_path, class: "nav-link", method: :delete %>
