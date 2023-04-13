@@ -8,7 +8,7 @@ class ArticlesController < ApplicationController
   end
 
   def index
-    @articles = Article.paginate(page: params[:page], per_page: 2)
+    @articles = Article.paginate(page: params[:page], per_page: 4)
   end
 
   def new
@@ -53,8 +53,8 @@ class ArticlesController < ApplicationController
   end
 
   def require_same_user
-    if current_user != @article.user
-      flash[:notice] = "You can only edit or delete your own article."
+    if current_user != @article.user && !current_user.admin?
+      flash[:alert] = "You can only edit or delete your own article."
       redirect_to @article
     end
   end
